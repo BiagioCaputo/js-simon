@@ -24,10 +24,21 @@ const getNumbers = (maxPcNumbers) => {
     return pcNumbers;
 }
 
+const getUserNumbers = (maxUserNumbers) =>{
+    const userNumbers = [];
+
+    while(userNumbers.length < maxUserNumbers){
+        const userNumber = prompt("inserisci un numero compreso tra 1 e 100");
+        if(!userNumbers.includes(userNumber)) userNumbers.push(userNumber);
+    }
+
+    return console.log(userNumbers);
+
+}
 
 /******************* Svolgimento effettivo **************************/
 
-const maxPcNumbers = 5;
+const maxPcNumbers = 2;
 
 //metto in ascolto il pulsante inizia
 startButton.addEventListener('click', () => {
@@ -37,4 +48,16 @@ startButton.addEventListener('click', () => {
     const listPcNumbers = getNumbers(maxPcNumbers);
 
     randomlist.innerText = listPcNumbers;
+    
+    //imposto un time-out per far sparire i numeri random e chiedere all'utente di inserire i numeri
+    setTimeout(() => {
+        result.innerText = "Via!"
+        randomlist.innerText = "";
+      }, 6000);
+
+    setTimeout(() => {
+        getUserNumbers(maxPcNumbers);
+    }, 7000);
+
+
 })
